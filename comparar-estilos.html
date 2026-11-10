@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VMS · Comparar direções visuais</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;700&family=Lora:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'DM Sans',Arial,sans-serif;background:#ECE9E2;color:#2A2A26;padding:28px}
+  .pg-h{max-width:1080px;margin:0 auto 20px}
+  .pg-h h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:30px;font-weight:700}
+  .pg-h p{color:#6b6b63;font-size:14px}
+  .grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .cell{border-radius:16px;overflow:hidden;box-shadow:0 14px 34px rgba(0,0,0,.1)}
+  .lab{padding:10px 16px;font-size:12.5px;font-weight:700;letter-spacing:.3px;background:#2A3550;color:#fff;display:flex;justify-content:space-between;gap:10px}
+  .lab span{font-weight:400;opacity:.8}
+  .hero{padding:40px 34px;min-height:300px;display:flex;flex-direction:column;justify-content:center}
+  .eb{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}
+  .hero h2{line-height:1.05;margin-bottom:14px}
+  .hero p{font-size:14.5px;margin-bottom:22px;max-width:380px}
+  .b{display:inline-block;font-weight:700;font-size:14px;padding:12px 22px;width:fit-content}
+
+  /* 1 OURA — papel creme, serifa editorial, tons terrosos */
+  .oura{background:#F0EADB}
+  .oura .eb{color:#A9792E}
+  .oura h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;font-size:44px;color:#2B2A24}
+  .oura p{color:#5E5A4E}
+  .oura .b{background:#8C7E5A;color:#fff;border-radius:8px}
+
+  /* 2 NOTION — minimalismo quente, serifa, superfícies suaves */
+  .notion{background:#FBFAF7}
+  .notion .eb{color:#9B8E6B}
+  .notion h2{font-family:'Lora',Georgia,serif;font-weight:600;font-size:40px;color:#2F2B24}
+  .notion p{color:#6B675C}
+  .notion .b{background:#2F2B24;color:#fff;border-radius:7px}
+
+  /* 3 MERCURY — noite índigo, sans leve, pílula */
+  .mercury{background:#14151F}
+  .mercury .eb{color:#C9B073}
+  .mercury h2{font-family:'DM Sans',Arial,sans-serif;font-weight:500;font-size:40px;color:#F3F3F7;letter-spacing:-.5px}
+  .mercury p{color:#AEB0BE}
+  .mercury .b{background:#C9B073;color:#1a1a1a;border-radius:40px}
+
+  /* 4 ORACLE/IBM — enterprise, grotesca, estrutura, ação carvão */
+  .oracle{background:#fff;border-top:4px solid #8C7E5A}
+  .oracle .eb{color:#5C6072}
+  .oracle h2{font-family:'DM Sans',Arial,sans-serif;font-weight:700;font-size:38px;color:#161616;letter-spacing:-.5px}
+  .oracle p{color:#4a4f60}
+  .oracle .b{background:#2A3550;color:#fff;border-radius:0}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+  <div class="pg-h"><h1>VMS · 4 direções visuais</h1><p>O mesmo herói da VMS em cada linguagem. Todas mantêm o navy + dourado da marca — muda o clima, a tipografia e os detalhes.</p></div>
+  <div class="grid">
+    <div class="cell"><div class="lab">1 · OURA <span>papel creme · serifa editorial · tons terrosos</span></div>
+      <div class="hero oura"><div class="eb">Consultoria &amp; Engenharia</div><h2>Sua obra, em tempo real.</h2><p>Gestão fiscal e engenharia, acompanhada 24h pelo Portal VMS.</p><a class="b">Diagnóstico gratuito</a></div></div>
+
+    <div class="cell"><div class="lab">2 · NOTION <span>minimalismo quente · serifa suave</span></div>
+      <div class="hero notion"><div class="eb">Consultoria &amp; Engenharia</div><h2>Sua obra, em tempo real.</h2><p>Gestão fiscal e engenharia, acompanhada 24h pelo Portal VMS.</p><a class="b">Diagnóstico gratuito</a></div></div>
+
+    <div class="cell"><div class="lab">3 · MERCURY <span>noite índigo · sans leve · pílula</span></div>
+      <div class="hero mercury"><div class="eb">Consultoria &amp; Engenharia</div><h2>Sua obra, em tempo real.</h2><p>Gestão fiscal e engenharia, acompanhada 24h pelo Portal VMS.</p><a class="b">Diagnóstico gratuito</a></div></div>
+
+    <div class="cell"><div class="lab">4 · ORACLE / IBM <span>enterprise · grotesca · estrutura</span></div>
+      <div class="hero oracle"><div class="eb">Consultoria &amp; Engenharia</div><h2>Sua obra, em tempo real.</h2><p>Gestão fiscal e engenharia, acompanhada 24h pelo Portal VMS.</p><a class="b">Diagnóstico gratuito</a></div></div>
+  </div>
+</body>
+</html>

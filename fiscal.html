@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VMS Consultoria — Gestão fiscal e previdenciária de obras (ISS/INSS)</title>
+<meta name="description" content="VMS Consultoria: gestão fiscal e previdenciária de obras — ISS, INSS, isenção, Habite-se e CND, acompanhada em tempo real pelo Portal.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header id="hd" class="on-dark">
+  <div class="wrap bar">
+    <img class="logo" src="logo-vms.png" alt="VMS"><img class="logo-l" src="logo-vms.png" alt="VMS" style="filter:brightness(0) invert(1)">
+    <nav><a href="index.html">Início</a><a href="engenharia.html">Engenharia</a><a href="#servicos">Serviços</a><a href="#contato">Contato</a></nav>
+    <button class="btn btn-g hcta" onclick="openQuiz('fiscal')">Diagnóstico gratuito</button>
+    <button class="burger" onclick="document.querySelector('nav').scrollIntoView()">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="bg" style="background-image:url('img/aperto.png')"></div><div class="ov"></div><div class="grid-lines"></div>
+  <div class="wrap">
+    <a href="index.html" class="eb rv in" style="text-decoration:none">← VMS · uma só empresa, dois caminhos</a>
+    <h1 class="rv in d1">VMS Consultoria — a sua obra <span class="hl">fiscalmente blindada.</span></h1>
+    <p class="rv in d2">Gestão de ISS e INSS pensando como auditor: pague o mínimo que a lei exige, recupere crédito comprovado e chegue ao Habite-se sem passivo — acompanhando tudo pelo <b>Portal VMS</b>.</p>
+    <div class="actions rv in d3"><button class="btn btn-g" onclick="openQuiz('fiscal')">Fazer diagnóstico fiscal</button><a class="btn btn-ghost" href="#portal">Ver o Portal fiscal</a></div>
+  </div>
+</section>
+
+<div class="strip"><div class="wrap">
+  <div class="stat"><b data-count="45" data-prefix="R$ " data-suffix=" mi+">0</b><small>ECONOMIA IDENTIFICADA</small></div>
+  <div class="stat"><b data-count="145500" data-suffix="+">0</b><small>UNIDADES GERENCIADAS</small></div>
+  <div class="stat"><b data-count="20" data-suffix="+">0</b><small>ANOS DE EXPERIÊNCIA</small></div>
+  <div class="stat"><b data-count="100" data-suffix="%">0</b><small>CONFORMIDADE EM AUDITORIAS</small></div>
+</div></div>
+
+<section id="servicos">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="eb" style="justify-content:center">VMS Consultoria</span><h2>Serviços fiscais &amp; previdenciários.</h2><p>Clique para ver o que cada serviço inclui.</p></div>
+    <div style="max-width:760px;margin:0 auto">
+      <div class="acc rv"><h4>Gestão Fiscal (ISS e INSS) <span class="ic">+</span></h4><div class="body"><ul><li>Consultoria e acompanhamento de ISSQN</li><li>Gestão previdenciária (INSS)</li><li>Relatórios de conformidade para auditoria</li><li>Gestão e regularidade de terceiros</li><li>Emissão de CND</li><li>Treinamento das equipes</li></ul></div></div>
+      <div class="acc rv"><h4>Isenção de ISS / DTCO <span class="ic">+</span></h4><div class="body"><ul><li>Análise técnica do enquadramento (HIS/MCMV)</li><li>Emissão da DTCO</li><li>Certificado de Declaração do ISS</li><li>Relatório técnico de riscos</li><li>Planejamento tributário</li><li>Defesa técnica junto à Prefeitura</li></ul></div></div>
+      <div class="acc rv"><h4>Acompanhamento mensal de ISS <span class="ic">+</span></h4><div class="body"><ul><li>Análise mensal de conformidade</li><li>Acompanhamento da retenção de ISS</li><li>Relatórios de conformidade</li><li>Orientação sobre deduções e benefícios</li></ul></div></div>
+      <div class="acc rv"><h4>Documentação Trabalhista &amp; INSS <span class="ic">+</span></h4><div class="body"><ul><li>Gestão da documentação trabalhista</li><li>Conformidade previdenciária (INSS)</li><li>Verificação de regularidade de prestadores</li><li>Indicadores de risco proativo</li></ul></div></div>
+      <div class="acc rv"><h4>Auditoria de CNOs encerrados <span class="ic">+</span></h4><div class="body"><ul><li>Análise da documentação protocolada</li><li>Identificação de riscos por projeto</li><li>Relatório com diretrizes e melhores práticas</li><li>Reunião técnica com especialista</li></ul></div></div>
+      <div class="acc rv"><h4>Auditoria Previdenciária Pós-Obra <span class="ic">+</span></h4><div class="body"><ul><li>Análise documental completa</li><li>Validação de conformidade INSS</li><li>Reconciliação de valores</li><li>Relatório executivo + plano de ação</li></ul></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="portal" class="paper">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="eb" style="justify-content:center">Portal · visão fiscal</span><h2>Seu resultado fiscal, ao vivo.</h2><p>Economia entregue, aproveitamento de ISS/INSS e documentação — sem esperar o relatório do mês.</p></div>
+    <div class="device rv">
+      <div class="chrome"><span class="d"></span><span class="d"></span><span class="d"></span><span class="url">portal.vmsconsultoria.com · fiscal</span><span class="live" style="margin-left:auto"><span class="dot"></span><span id="ago">atualizado agora</span></span></div>
+      <div class="pbody">
+        <div class="phead"><b>Residencial Aurora · visão fiscal</b><span class="meta">set/26 · dados ilustrativos</span></div>
+        <div class="pk">
+          <div class="pkc"><small>Economia entregue</small><b style="color:var(--gold)">R$ 1,24 mi</b><span class="up">+R$ 61 mil no mês</span></div>
+          <div class="pkc"><small>ISS aproveitado</small><b id="k1" style="color:var(--green)">118%</b><div class="barp"><i id="b1" style="width:100%"></i></div></div>
+          <div class="pkc"><small>INSS comprovado</small><b id="k2">89%</b><div class="barp"><i id="b2" style="width:89%"></i></div></div>
+          <div class="pkc"><small>Documentação</small><b>94%</b><div class="barp"><i style="width:94%"></i></div></div>
+        </div>
+        <div class="chartbox"><h5>Economia entregue — últimos 12 meses</h5>
+          <div class="bars"><i style="height:42%"></i><i style="height:50%"></i><i style="height:40%"></i><i style="height:64%"></i><i style="height:72%"></i><i style="height:56%"></i><i style="height:60%"></i><i style="height:74%"></i><i style="height:58%"></i><i style="height:68%"></i><i style="height:82%"></i><i style="height:92%"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head rv"><span class="eb" style="justify-content:center">Quem atendemos</span><h2>Para quem construímos tranquilidade fiscal.</h2></div>
+    <div class="who">
+      <div class="wtag rv"><div class="i">🏢</div><b>Incorporadoras</b><small>residencial e MCMV/HIS</small></div>
+      <div class="wtag rv d1"><div class="i">🏗️</div><b>Construtoras</b><small>obras de todos os portes</small></div>
+      <div class="wtag rv d2"><div class="i">📊</div><b>Com time interno</b><small>auditoria/2ª opinião</small></div>
+      <div class="wtag rv d3"><div class="i">🧾</div><b>Obras em SP</b><small>ISS municipal + INSS/SERO</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="contato">
+  <div class="wrap rv"><h2>Sua obra pode estar pagando imposto a mais.</h2><p>Diagnóstico fiscal gratuito — apontamos risco de passivo e crédito a recuperar.</p><button class="btn btn-g" onclick="openQuiz('fiscal')">Quero meu diagnóstico fiscal</button></div>
+</section>
+
+<footer><div class="wrap"><div class="cols">
+  <div style="max-width:320px"><b>VMS Consultoria &amp; Engenharia</b>Fiscal e engenharia de obras, acompanhada em tempo real pelo Portal.</div>
+  <div><b>Empresas</b><a href="fiscal.html">VMS Consultoria (Fiscal)</a><br><a href="engenharia.html">VMS Engenharia (Obras)</a></div>
+  <div><b>Contato</b><a href="mailto:mariana@vmsconsultoria.com">mariana@vmsconsultoria.com</a><br><a href="https://wa.me/5511994044124" target="_blank" rel="noopener">WhatsApp: (11) 99404-4124</a><br>Av. Paulista, 1.636 · SP</div>
+</div><div class="fin">© 2026 VMS Consultoria &amp; Engenharia</div></div></footer>
+
+<a class="wa" href="https://wa.me/5511994044124?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20VMS." target="_blank" rel="noopener">WhatsApp</a>
+<div class="modal" id="modal"><div class="qbox" id="qbox"></div></div>
+<script src="script.js"></script>
+</body>
+</html>
