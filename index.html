@@ -12,18 +12,17 @@
 
 <header id="hd" class="on-dark">
   <div class="wrap bar">
-    <img class="logo" src="logo-vms.png" alt="VMS Consultoria &amp; Engenharia">
-    <img class="logo-l" src="logo-vms.png" alt="VMS" style="filter:brightness(0) invert(1)">
-    <nav><a href="#modulos">Empresas</a><a href="#portal">Portal</a><a href="#diagnostico">Diagnóstico</a><a href="#contato">Contato</a></nav>
+    <a href="index.html" aria-label="VMS — início"><img class="logo" src="logo-vms.png" alt="VMS Consultoria &amp; Engenharia"><img class="logo-l" src="logo-vms.png" alt="VMS" style="filter:brightness(0) invert(1)"></a>
+    <nav><a href="#modulos">Empresas</a><a href="#tempo-real">Portal</a><a href="#diagnostico">Diagnóstico</a><a href="#contato">Contato</a></nav>
     <button class="btn btn-g hcta" onclick="openQuiz('fiscal')">Diagnóstico gratuito</button>
-    <button class="burger" onclick="document.querySelector('nav').scrollIntoView()">☰</button>
+    <button class="burger" aria-label="Abrir menu" onclick="document.querySelector('nav').scrollIntoView()">☰</button>
   </div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="bg" style="background-image:url('img/hero.png')"></div>
-  <div class="ov"></div><div class="grid-lines"></div>
+  <div class="bg" style="background-image:url('img/engenharia.jpg')"></div>
+  <div class="ov"></div>
   <div class="wrap">
     <span class="eb rv in">Consultoria &amp; Engenharia · Construção civil</span>
     <h1 class="rv in d1">Do imposto ao Habite-se, a VMS cuida da sua obra — <span class="hl">e você acompanha em tempo real.</span></h1>
@@ -44,23 +43,23 @@
   </div>
 </div>
 
-<!-- MÓDULOS (padrão do Portal) -->
+<!-- MÓDULOS -->
 <section id="modulos" class="paper">
   <div class="wrap">
     <div class="sec-head rv"><span class="eb" style="justify-content:center">Uma só VMS · dois caminhos</span><h2>Por onde você quer começar?</h2>
-      <p>A VMS une o que o mercado separa: a parte fiscal e a engenharia da obra. Escolha um módulo — ou use os dois.</p></div>
+      <p>A VMS une o que o mercado separa: a parte fiscal e a engenharia da obra. Escolha um caminho — ou use os dois.</p></div>
     <div class="mods">
       <a class="mod rv" href="fiscal.html">
-        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-6 9 6"/><path d="M5 10v9M9 10v9M15 10v9M19 10v9M3 21h18"/></svg></span>
-        <span class="eb" style="margin-top:14px">VMS Consultoria</span>
+        <span class="mod-img" style="background-image:url('img/fiscal.jpg')" role="img" aria-label="Equipe VMS analisando documentos fiscais no escritório"></span>
+        <span class="eb">VMS Consultoria</span>
         <h3>Fiscal &amp; Previdenciário</h3>
         <div class="sub">O resultado fiscal de cada obra, sempre à vista.</div>
         <div class="chips"><span class="chip">ISS e INSS</span><span class="chip">Isenção de ISS</span><span class="chip">Documentação trabalhista</span><span class="chip">Habite-se &amp; CND</span></div>
         <span class="ent">Ver a VMS Consultoria →</span>
       </a>
       <a class="mod rv d1" href="engenharia.html">
-        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17a8 8 0 0 1 16 0"/><path d="M10 9V6a2 2 0 0 1 4 0v3"/><path d="M3 17h18v2H3z"/></svg></span>
-        <span class="eb" style="margin-top:14px">VMS Engenharia</span>
+        <span class="mod-img" style="background-image:url('img/engenharia.jpg')" role="img" aria-label="Engenheiros VMS no canteiro de obras"></span>
+        <span class="eb">VMS Engenharia</span>
         <h3>Obras, Reforma &amp; Medição</h3>
         <div class="sub">O avanço de cada obra, do cronograma ao custo.</div>
         <div class="chips"><span class="chip">Planejamento</span><span class="chip">Orçamento</span><span class="chip">Gerenciamento</span><span class="chip">Reforma</span><span class="chip">Medição</span></div>
@@ -71,54 +70,30 @@
   </div>
 </section>
 
-<!-- PORTAL -->
-<section id="portal">
+<!-- TEMPO REAL / PORTAL (humano, sem clonar o painel) -->
+<section id="tempo-real">
   <div class="wrap">
-    <div class="sec-head rv"><span class="eb" style="justify-content:center">O diferencial · tecnologia</span><h2>Fiscal <span style="color:var(--gold)">e</span> físico — a sua obra inteira, ao vivo.</h2>
-      <p>Tudo em um painel vivo: o andamento físico da obra (curva S, medições) e o resultado fiscal (economia, ISS/INSS), atualizados em tempo real — sem depender do relatório mensal.</p></div>
-    <div class="device rv">
-      <div class="chrome"><span class="d"></span><span class="d"></span><span class="d"></span>
-        <span class="url">portal.vmsconsultoria.com · Residencial Aurora</span>
-        <span class="live" style="margin-left:auto"><span class="dot"></span><span id="ago">atualizado agora</span></span></div>
-      <div class="pbody">
-        <div class="phead"><b>Residencial Aurora</b><span class="meta">Zona Sul / SP · set/26 · dados ilustrativos</span></div>
-        <div class="ptabs">
-          <button class="ptab active" onclick="pTab(0,this)">Andamento físico</button>
-          <button class="ptab" onclick="pTab(1,this)">Resultado fiscal</button>
-        </div>
-        <div class="ppanel show" id="pp0">
-          <div class="pk">
-            <div class="pkc"><small>Avanço físico · set/26</small><b>72,4%</b><span class="up">+2,1 p.p. vs previsto</span></div>
-            <div class="pkc"><small>OAT (ao término)</small><b>R$ 48,1 mi</b><span style="font-size:12px;color:var(--sec)">IDC 0,97</span></div>
-            <div class="pkc"><small>Medições liberadas</small><b>R$ 34,2 mi</b><span style="font-size:12px;color:var(--sec)">71% do contrato</span></div>
-            <div class="pkc"><small>Prazo</small><b style="font-size:17px">set/24 → dez/26</b><span class="up">no prazo</span></div>
-          </div>
-          <div class="chartbox"><h5>Curva S — físico realizado × previsto</h5>
-            <svg viewBox="0 0 600 150" width="100%" height="140" preserveAspectRatio="none" aria-hidden="true">
-              <polyline points="0,142 100,130 200,106 300,76 400,46 500,28 600,18" fill="none" stroke="#B4B2A9" stroke-width="2" stroke-dasharray="6 5"/>
-              <polyline points="0,142 100,126 200,99 300,68 400,40 500,24 600,13" fill="none" stroke="#8C7E5A" stroke-width="3"/>
-            </svg>
-            <div style="font-size:11.5px;color:var(--sec);margin-top:6px"><span style="color:#8C7E5A">● realizado</span> &nbsp; <span style="color:#B4B2A9">┄ previsto</span></div>
-          </div>
-        </div>
-        <div class="ppanel" id="pp1">
-          <div class="pk">
-            <div class="pkc"><small>Economia entregue</small><b style="color:var(--gold)">R$ 1,24 mi</b><span class="up">+R$ 61 mil no mês</span></div>
-            <div class="pkc"><small>ISS aproveitado</small><b id="k1" style="color:var(--green)">118%</b><div class="barp"><i id="b1" style="width:100%"></i></div></div>
-            <div class="pkc"><small>INSS comprovado</small><b id="k2">89%</b><div class="barp"><i id="b2" style="width:89%"></i></div></div>
-            <div class="pkc"><small>Documentação</small><b>94%</b><div class="barp"><i style="width:94%"></i></div></div>
-          </div>
-          <div class="chartbox"><h5>Economia entregue — últimos 12 meses</h5>
-            <div class="bars"><i style="height:42%"></i><i style="height:50%"></i><i style="height:40%"></i><i style="height:64%"></i><i style="height:72%"></i><i style="height:56%"></i><i style="height:60%"></i><i style="height:74%"></i><i style="height:58%"></i><i style="height:68%"></i><i style="height:82%"></i><i style="height:92%"></i></div>
-          </div>
-        </div>
+    <div class="split">
+      <div class="txt rv">
+        <span class="eb">O diferencial · tempo real</span>
+        <h2>Fiscal <span style="color:var(--gold)">e</span> físico, sempre à vista.</h2>
+        <p>Enquanto a maioria entrega um relatório no fim do mês, a VMS te dá acesso a um portal próprio — o andamento da obra e o resultado fiscal, atualizados ao longo do caminho.</p>
+        <ul class="benefits">
+          <li><b>Avanço físico da obra</b> — cronograma, medições e o que já foi entregue.</li>
+          <li><b>Resultado fiscal</b> — economia de ISS/INSS e documentação em dia.</li>
+          <li><b>Um só lugar, 24h</b> — você e sua equipe acompanham quando quiserem.</li>
+        </ul>
+        <a class="btn btn-d" href="https://portal.vmsconsultoria.com" target="_blank" rel="noopener">Acessar o Portal VMS →</a>
+      </div>
+      <div class="img rv d1" style="background-image:url('img/fiscal.jpg')">
+        <span class="badge"><span class="live"><span class="dot"></span>atualizado em tempo real</span></span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- PHOTO BAND (prova) -->
-<section class="photoband" style="background-image:url('img/fachada.png')">
+<section class="photoband" style="background-image:url('img/engenharia.jpg')">
   <div class="ov"></div>
   <div class="wrap rv"><span class="eb" style="color:var(--goldl)">+20 anos · da fundação ao Habite-se</span>
     <h2>Profissionais com mais de 20 anos de estrada, e +145 mil unidades que saíram do papel com a VMS por perto.</h2>
@@ -131,8 +106,8 @@
     <div class="sec-head rv"><span class="eb" style="justify-content:center;color:var(--goldl)">Sem compromisso · 1 minuto</span>
       <h2>Faça um diagnóstico gratuito</h2><p>Dois caminhos, duas análises. Descubra onde sua obra pode economizar ou está em risco.</p></div>
     <div class="dcards">
-      <div class="dcard rv"><div class="i">⚖</div><h3>Diagnóstico Fiscal</h3><p>ISS, INSS, isenção, Habite-se e crédito a recuperar.</p><button class="btn btn-g" onclick="openQuiz('fiscal')">Começar diagnóstico fiscal</button></div>
-      <div class="dcard rv d1"><div class="i">🏗</div><h3>Diagnóstico de Engenharia</h3><p>Planejamento, gerenciamento, reforma e medição.</p><button class="btn btn-g" onclick="openQuiz('eng')">Começar diagnóstico de obra</button></div>
+      <div class="dcard rv"><span class="i"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 7l-4 7h8zM17 7l-4 7h8zM5 21h14"/></svg></span><h3>Diagnóstico Fiscal</h3><p>ISS, INSS, isenção, Habite-se e crédito a recuperar.</p><button class="btn btn-g" onclick="openQuiz('fiscal')">Começar diagnóstico fiscal</button></div>
+      <div class="dcard rv d1"><span class="i"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17a8 8 0 0 1 16 0"/><path d="M10 9V6a2 2 0 0 1 4 0v3"/><path d="M3 17h18v2H3z"/></svg></span><h3>Diagnóstico de Engenharia</h3><p>Planejamento, gerenciamento, reforma e medição.</p><button class="btn btn-g" onclick="openQuiz('eng')">Começar diagnóstico de obra</button></div>
     </div>
   </div>
 </section>
@@ -157,7 +132,7 @@
   </div>
 </footer>
 
-<a class="wa" href="https://wa.me/5511994044124?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20VMS." target="_blank" rel="noopener">WhatsApp</a>
+<a class="wa" href="https://wa.me/5511994044124?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20VMS." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">WhatsApp</a>
 <div class="modal" id="modal"><div class="qbox" id="qbox"></div></div>
 <script src="script.js"></script>
 </body>

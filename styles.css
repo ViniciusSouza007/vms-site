@@ -104,8 +104,16 @@ section{padding:94px 0}
 .bars{display:flex;align-items:flex-end;gap:5px;height:96px}.bars i{flex:1;background:#639922;border-radius:3px 3px 0 0}
 /* split (image + text) */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.split .txt h2{font-size:clamp(26px,3.4vw,40px);margin:12px 0 14px}
+.split .txt p{color:var(--sec);font-size:16.5px}
 .split .img{border-radius:var(--rl);overflow:hidden;aspect-ratio:4/3;background:var(--navy) center/cover;position:relative;box-shadow:0 24px 50px rgba(26,29,38,.18)}
 .split .img .badge{position:absolute;left:16px;bottom:16px;background:rgba(26,29,38,.9);color:#fff;border-radius:var(--r);padding:10px 14px;font-size:12px;font-family:'IBM Plex Mono',monospace}
+.split .img .badge .live{color:var(--live)}
+.benefits{list-style:none;margin:22px 0 26px}
+.benefits li{position:relative;padding:10px 0 10px 30px;border-bottom:1px solid var(--line);font-size:15.5px;color:#43485a}
+.benefits li:last-child{border-bottom:none}
+.benefits li b{color:var(--navy)}
+.benefits li:before{content:"";position:absolute;left:0;top:16px;width:10px;height:10px;border:2px solid var(--gold);border-radius:2px}
 .imgph{background:var(--navy) center/cover}
 /* steps */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
@@ -125,7 +133,7 @@ section{padding:94px 0}
 /* who we serve */
 .who{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .wtag{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px;text-align:center}
-.wtag .i{font-size:22px}.wtag b{display:block;font-size:15px;color:var(--navy);margin-top:6px;letter-spacing:-.2px}
+.wtag .i{font-size:22px;color:var(--gold-d);display:flex;justify-content:center}.wtag b{display:block;font-size:15px;color:var(--navy);margin-top:8px;letter-spacing:-.2px}
 .wtag small{font-size:12.5px;color:var(--sec)}
 /* diagnostics */
 .diag{background:var(--navy2);color:#fff;border-top:3px solid var(--gold)}
@@ -154,10 +162,13 @@ footer .fin{border-top:1px solid #2a3147;padding-top:18px;font-size:12px;color:#
 .wa{position:fixed;right:22px;bottom:22px;background:#25D366;color:#fff;border-radius:50px;padding:13px 20px;font-weight:700;box-shadow:0 8px 24px rgba(37,211,102,.4);z-index:70;transition:.2s}.wa:hover{transform:translateY(-3px)}
 /* module cards (padrão do Portal) */
 .mods{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.mod{background:#fff;border:1px solid var(--line);border-radius:var(--rl);padding:30px 32px;transition:.25s;display:flex;flex-direction:column}
+.mod{background:#fff;border:1px solid var(--line);border-radius:var(--rl);padding:30px 32px;transition:.25s;display:flex;flex-direction:column;overflow:hidden}
 .mod:hover{box-shadow:0 22px 46px rgba(26,29,38,.1);transform:translateY(-4px);border-color:var(--line2)}
 .mod .ico{width:54px;height:54px;border-radius:50%;border:1px solid var(--line2);background:var(--paper);display:flex;align-items:center;justify-content:center;color:var(--navy)}
-.mod h3{font-size:26px;margin:16px 0 6px}
+.mod-img{height:176px;margin:-30px -32px 22px;background:var(--navy) center/cover;border-bottom:3px solid var(--gold);transition:.4s}
+.mod:hover .mod-img{filter:saturate(1.08)}
+.mod .eb{margin-top:0}
+.mod h3{font-size:26px;margin:14px 0 6px}
 .mod .sub{color:var(--sec);font-size:15px;margin-bottom:16px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
 .chip{border:1px solid var(--line2);border-radius:20px;padding:5px 13px;font-size:12.5px;color:var(--navy);background:#fff}
@@ -192,3 +203,12 @@ footer .fin{border-top:1px solid #2a3147;padding-top:18px;font-size:12px;color:#
   .split .img{order:-1}
 }
 @media(max-width:560px){.steps,.pk,.who{grid-template-columns:1fr}.trow{grid-template-columns:1fr}.stat b{font-size:32px}}
+/* acessibilidade */
+a,button,.opt,.ptab,.acc h4{cursor:pointer}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
+header:not(.scrolled).on-dark a:focus-visible,.hero :focus-visible,.band :focus-visible,.diag :focus-visible{outline-color:var(--goldl)}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .rv{opacity:1!important;transform:none!important}
+  .live .dot{animation:none!important}
+}
