@@ -8,7 +8,7 @@
   var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target,t=+el.dataset.count,p=el.dataset.prefix||'',s=el.dataset.suffix||'',t0=performance.now();
     function tk(n){var k=Math.min(1,(n-t0)/1400),v=Math.round(t*(1-Math.pow(1-k,3)));el.innerHTML=p+'<em>'+fmt(v)+s+'</em>';if(k<1)requestAnimationFrame(tk)}requestAnimationFrame(tk);cio.unobserve(el)})},{threshold:.5});
   document.querySelectorAll('[data-count]').forEach(function(el){cio.observe(el)});
-  // portal live ticker
+  // portal live ticker (ilustrativo)
   var secs=0;setInterval(function(){secs+=3;var a=document.getElementById('ago');if(a)a.textContent='atualizado há '+secs+'s'},3000);
   setInterval(function(){var v1=90+Math.floor(Math.random()*5),v2=86+Math.floor(Math.random()*5),k1=document.getElementById('k1');if(k1){k1.textContent=v1+'%';var b1=document.getElementById('b1');if(b1)b1.style.width=v1+'%';var k2=document.getElementById('k2');if(k2)k2.textContent=v2+'%';var b2=document.getElementById('b2');if(b2)b2.style.width=v2+'%';var a=document.getElementById('ago');if(a)a.textContent='atualizado agora';secs=0}},6000);
   // accordion
@@ -16,42 +16,69 @@
 })();
 // portal tabs (global)
 function pTab(i,el){document.querySelectorAll('.ptab').forEach(function(t){t.classList.remove('active')});el.classList.add('active');var a=document.getElementById('pp0'),b=document.getElementById('pp1');if(a)a.classList.toggle('show',i===0);if(b)b.classList.toggle('show',i===1)}
-// quiz (global)
+// ===== Diagnóstico / lead (global) =====
 var QZ={
   fiscal:{tag:'Diagnóstico Fiscal',steps:[
-    {q:'A sua obra é residencial (MCMV/HIS) ou multifamiliar?',o:[['Sim',2],['Outro tipo',1],['Não sei',2]]},
+    {q:'Qual o tipo da sua obra?',o:[['Residencial (MCMV/HIS)',2],['Residencial multifamiliar',1],['Comercial / galpão',1],['Não sei',2]]},
     {q:'Em que fase a obra está?',o:[['Planejamento',1],['Em execução',2],['Perto do Habite-se',3]]},
-    {q:'Quem cuida do ISS/INSS da obra hoje?',o:[['Ninguém definido',3],['Contador interno',2],['Uma consultoria externa',1]]},
-    {q:'Como você recebe os resultados fiscais?',o:[['Quase não recebo',3],['Relatório mensal por e-mail',2],['Em tempo real',0]]},
-    {q:'Já teve pendência ou passivo em fiscalização?',o:[['Sim',3],['Não sei',2],['Não',1]]}
+    {q:'Quem cuida do ISS/INSS da obra hoje?',o:[['Ninguém definido',3],['Contador / equipe interna',2],['Uma consultoria externa',1]]},
+    {q:'Já teve pendência ou passivo em fiscalização?',o:[['Sim',3],['Não',1],['Não sei',2]]},
+    {q:'Sobre quais serviços você quer saber mais?',multi:true,o:['Gestão fiscal (ISS/INSS)','Isenção de ISS','Documentação trabalhista','Habite-se & CND','Auditoria pós-obra']}
   ]},
   eng:{tag:'Diagnóstico de Engenharia',steps:[
-    {q:'Qual seu principal desafio agora?',o:[['Planejar uma nova obra',2],['Controlar uma obra em andamento',2],['Reformar locais comerciais',2],['Medição para liberar financiamento',2]]},
+    {q:'Em que fase está a sua obra?',o:[['Viabilidade / projeto',2],['Em execução',2],['Finalização / medição',2],['Ainda não iniciada',2]]},
     {q:'Você tem cronograma físico-financeiro atualizado?',o:[['Não',3],['Mais ou menos',2],['Sim',1]]},
-    {q:'A obra está dentro do prazo e do orçamento?',o:[['Não / atrasada',3],['No limite',2],['Sim',1]]},
-    {q:'Quem gerencia a obra hoje?',o:[['Ninguém dedicado',3],['Equipe própria sobrecarregada',2],['Já terceirizo',1]]}
+    {q:'A obra tem financiamento (banco/fundo) com medições?',o:[['Sim',2],['Não',1],['Pretendo buscar',2]]},
+    {q:'Quem gerencia a obra hoje?',o:[['Ninguém dedicado',3],['Equipe própria sobrecarregada',2],['Já terceirizo',1]]},
+    {q:'Sobre quais serviços você quer saber mais?',multi:true,o:['Planejamento de obras','Orçamento','Gerenciamento','Medição para financiador']}
   ]}
 };
-var cur=null,step=0,score=0;
-function openQuiz(t){cur=t;step=0;score=0;document.getElementById('modal').classList.add('show');qRender()}
+var cur=null,step=0,score=0,ans=[],sel=[],lead={};
+function openQuiz(t){cur=t;step=0;score=0;ans=[];sel=[];lead={};document.getElementById('modal').classList.add('show');qRender()}
 function closeQuiz(){document.getElementById('modal').classList.remove('show')}
-function pick(v){score+=v;step++;qRender()}
+function pick(v,i){var s=QZ[cur].steps[step];ans.push({q:s.q,a:s.o[i][0]});score+=v;step++;qRender()}
+function toggleSel(i){var o=QZ[cur].steps[step].o[i],k=sel.indexOf(o);if(k<0)sel.push(o);else sel.splice(k,1);qRender()}
+function nextStep(){step++;qRender()}
+function submitLead(){var n=(document.getElementById('ld-nome').value||'').trim(),c=(document.getElementById('ld-contato').value||'').trim();if(!n||!c){var e=document.getElementById('ld-err');if(e)e.style.display='block';return}lead={nome:n,contato:c};qRender()}
 function qRender(){
-  var z=QZ[cur],box=document.getElementById('qbox');
+  var z=QZ[cur],box=document.getElementById('qbox'),total=z.steps.length+1,h;
   if(step<z.steps.length){
-    var s=z.steps[step],pct=Math.round(step/z.steps.length*100),h='<button class="x" onclick="closeQuiz()">×</button><div class="qprog"><i style="width:'+pct+'%"></i></div>';
-    h+='<span class="tag">'+z.tag+' · '+(step+1)+'/'+z.steps.length+'</span><h3>'+s.q+'</h3>';
-    s.o.forEach(function(o){h+='<button class="opt" onclick="pick('+o[1]+')">'+o[0]+'</button>'});
+    var s=z.steps[step],pct=Math.round(step/total*100);
+    h='<button class="x" onclick="closeQuiz()">×</button><div class="qprog"><i style="width:'+pct+'%"></i></div>';
+    h+='<span class="tag">'+z.tag+' · '+(step+1)+'/'+total+'</span><h3>'+s.q+'</h3>';
+    if(s.multi){
+      h+='<p class="qhint">Pode marcar mais de uma.</p>';
+      s.o.forEach(function(o,i){var on=sel.indexOf(o)>=0;h+='<button class="opt'+(on?' on':'')+'" onclick="toggleSel('+i+')">'+o+(on?'<span class="ck">✓</span>':'')+'</button>'});
+      h+='<button class="btn btn-g" style="width:100%;justify-content:center;margin-top:8px" onclick="nextStep()">Continuar →</button>';
+    }else{
+      s.o.forEach(function(o,i){h+='<button class="opt" onclick="pick('+o[1]+','+i+')">'+o[0]+'</button>'});
+    }
+    box.innerHTML=h;
+  }else if(!lead.nome){
+    var pct2=Math.round(z.steps.length/total*100);
+    h='<button class="x" onclick="closeQuiz()">×</button><div class="qprog"><i style="width:'+pct2+'%"></i></div>';
+    h+='<span class="tag">'+z.tag+' · último passo</span><h3>Pra onde enviamos seu diagnóstico?</h3>';
+    h+='<p class="qhint">Um especialista da VMS retorna com a análise. Sem compromisso.</p>';
+    h+='<div class="qfield"><label>Seu nome</label><input id="ld-nome" type="text" placeholder="Nome e sobrenome"></div>';
+    h+='<div class="qfield"><label>WhatsApp ou e-mail</label><input id="ld-contato" type="text" placeholder="(11) 90000-0000 ou voce@empresa.com"></div>';
+    h+='<p id="ld-err" style="display:none;color:#A32D2D;font-size:13px;margin-bottom:10px">Preencha seu nome e um contato.</p>';
+    h+='<button class="btn btn-g" style="width:100%;justify-content:center" onclick="submitLead()">Ver meu diagnóstico →</button>';
     box.innerHTML=h;
   }else{
-    var max=z.steps.reduce(function(a,s){return a+Math.max.apply(0,s.o.map(function(o){return o[1]}))},0),r=score/max,title,txt;
-    if(r>=.62){title='Alto potencial — vale um diagnóstico urgente.';txt='Há forte chance de economia não aproveitada e de risco a blindar na sua obra. Um especialista da VMS aponta exatamente onde, sem compromisso.';}
-    else if(r>=.38){title='Há oportunidades a destravar.';txt='Sua operação tem pontos de economia e de risco que valem uma 2ª opinião da VMS — e você passa a acompanhar tudo pelo Portal.';}
-    else{title='Parece organizado — mas confirme.';txt='Mesmo com a casa arrumada, uma revisão independente costuma encontrar crédito deixado na mesa. Vale uma conversa rápida.';}
+    var max=z.steps.filter(function(s){return !s.multi}).reduce(function(a,s){return a+Math.max.apply(0,s.o.map(function(o){return o[1]}))},0),r=max?score/max:0,title,txt;
+    if(r>=.6){title='Alto potencial — vale uma análise com prioridade.';txt='Há forte chance de economia não aproveitada e de risco a blindar na sua obra. Nosso time aponta exatamente onde.';}
+    else if(r>=.38){title='Há oportunidades a destravar.';txt='Sua operação tem pontos de economia e de risco que valem uma segunda opinião da VMS.';}
+    else{title='Parece organizado — mas confirme.';txt='Mesmo com a casa arrumada, uma revisão independente costuma encontrar crédito deixado na mesa.';}
     var tipo=cur==='fiscal'?'fiscal':'de obra';
-    var wa='https://wa.me/5511994044124?text='+encodeURIComponent('Olá! Fiz o diagnóstico '+tipo+' no site da VMS e meu resultado foi: "'+title+'". Quero falar com um especialista.');
-    var mail='mailto:mariana@vmsconsultoria.com?subject='+encodeURIComponent('Diagnóstico '+tipo+' — site VMS')+'&body='+encodeURIComponent('Olá, VMS!\n\nFiz o diagnóstico '+tipo+' no site e meu resultado foi: '+title+'\n\nQuero falar com um especialista.\n\nMeu nome:\nEmpresa / obra:\nTelefone:');
-    box.innerHTML='<button class="x" onclick="closeQuiz()">×</button><div class="qres"><span class="score">Resultado do seu diagnóstico</span><h3>'+title+'</h3><p>'+txt+'</p><a class="btn btn-g" href="'+wa+'" target="_blank" rel="noopener">Falar no WhatsApp</a> <a class="btn btn-o" href="'+mail+'">Enviar por e-mail</a></div>';
+    var linhas=ans.map(function(a){return '• '+a.q+' '+a.a}).join('\n');
+    var serv=sel.length?sel.join(', '):'—';
+    var msg='Olá, VMS! Fiz o diagnóstico '+tipo+' no site.\n\nNome: '+lead.nome+'\nContato: '+lead.contato+'\n\nRespostas:\n'+linhas+'\n\nQuero saber mais sobre: '+serv+'\n\nResultado: '+title;
+    var wa='https://wa.me/5511994044124?text='+encodeURIComponent(msg);
+    var mail='mailto:mariana@vmsconsultoria.com?subject='+encodeURIComponent('Lead — Diagnóstico '+tipo+' (site VMS)')+'&body='+encodeURIComponent(msg);
+    h='<button class="x" onclick="closeQuiz()">×</button><div class="qres"><span class="score">Resultado · '+lead.nome.split(' ')[0]+'</span><h3>'+title+'</h3><p>'+txt+'</p>';
+    h+='<p class="qhint" style="margin-top:-6px">Toque abaixo pra enviar seu diagnóstico e falar com um especialista.</p>';
+    h+='<a class="btn btn-g" href="'+wa+'" target="_blank" rel="noopener">Enviar no WhatsApp</a> <a class="btn btn-o" href="'+mail+'">Enviar por e-mail</a></div>';
+    box.innerHTML=h;
   }
 }
 document.addEventListener('click',function(e){var m=document.getElementById('modal');if(m&&e.target===m)closeQuiz()});

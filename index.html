@@ -21,12 +21,17 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="bg" style="background-image:url('engenharia.jpg')"></div>
+  <div class="bg" style="background-image:url('hero.jpg')"></div>
   <div class="ov"></div>
   <div class="wrap">
     <span class="eb rv in">Consultoria &amp; Engenharia · Construção civil</span>
     <h1 class="rv in d1">Enquanto você constrói, a VMS <span class="hl">planeja, gerencia e reduz seus impostos.</span></h1>
-    <p class="rv in d2">Uma só empresa, dois caminhos: <b>gestão fiscal (ISS/INSS)</b> e <b>engenharia de obras</b>. E, com o <b>Portal VMS</b>, você acompanha cada resultado em tempo real — sem esperar o relatório do mês.</p>
+    <p class="rv in d2">Uma só empresa, dois caminhos — e, com o <b>Portal VMS</b>, você acompanha cada resultado em tempo real.</p>
+    <div class="hero-serv rv in d2">
+      <div class="hs"><b>VMS Consultoria Fiscal</b><span>ISS · INSS · isenção · Habite-se</span></div>
+      <div class="hs"><b>VMS Engenharia de Obras</b><span>planejamento · gerenciamento · orçamento · medição</span></div>
+    </div>
+    <p class="hero-area rv in d3">Para <b>construtoras</b>, <b>incorporadoras</b> e <b>obras</b> — ISS municipal e INSS federal (SP e região).</p>
     <div class="actions rv in d3">
       <button class="btn btn-g" onclick="openQuiz('fiscal')">Diagnóstico fiscal</button>
       <button class="btn btn-ghost" onclick="openQuiz('eng')">Diagnóstico de obra</button>
@@ -70,24 +75,52 @@
   </div>
 </section>
 
-<!-- TEMPO REAL / PORTAL (humano, sem clonar o painel) -->
+<!-- TEMPO REAL / PORTAL -->
 <section id="tempo-real">
   <div class="wrap">
-    <div class="split">
-      <div class="txt rv">
-        <span class="eb">O diferencial · tempo real</span>
-        <h2>Fiscal <span style="color:var(--gold)">e</span> físico, sempre à vista.</h2>
-        <p>Enquanto a maioria entrega um relatório no fim do mês, a VMS te dá acesso a um portal próprio — o andamento da obra e o resultado fiscal, atualizados ao longo do caminho.</p>
-        <ul class="benefits">
-          <li><b>Avanço físico da obra</b> — cronograma, medições e o que já foi entregue.</li>
-          <li><b>Resultado fiscal</b> — economia de ISS/INSS e documentação em dia.</li>
-          <li><b>Um só lugar, 24h</b> — você e sua equipe acompanham quando quiserem.</li>
-        </ul>
-        <a class="btn btn-d" href="https://portal.vmsconsultoria.com" target="_blank" rel="noopener">Acessar o Portal VMS →</a>
+    <div class="sec-head rv"><span class="eb" style="justify-content:center">O diferencial · tempo real</span><h2>Fiscal <span style="color:var(--gold)">e</span> físico, sempre à vista.</h2>
+      <p>Enquanto a maioria entrega um relatório no fim do mês, a VMS te dá acesso a um portal próprio — o andamento da obra <b>e</b> o resultado fiscal no mesmo lugar. Veja um exemplo:</p></div>
+    <div class="device rv">
+      <div class="chrome"><span class="d"></span><span class="d"></span><span class="d"></span>
+        <span class="url">portal.vmsconsultoria.com</span>
+        <span class="live" style="margin-left:auto"><span class="dot"></span><span id="ago">atualizado agora</span></span></div>
+      <div class="pbody">
+        <div class="phead"><b>Residencial Aurora</b><span class="meta">exemplo · dados ilustrativos</span></div>
+        <div class="ptabs">
+          <button class="ptab active" onclick="pTab(0,this)">Andamento físico</button>
+          <button class="ptab" onclick="pTab(1,this)">Resultado fiscal</button>
+        </div>
+        <div class="ppanel show" id="pp0">
+          <div class="pk">
+            <div class="pkc"><small>Avanço físico</small><b>72,4%</b><span class="up">+2,1 p.p. vs previsto</span></div>
+            <div class="pkc"><small>Medições liberadas</small><b>R$ 34,2 mi</b><span style="font-size:12px;color:var(--sec)">71% do contrato</span></div>
+            <div class="pkc"><small>Prazo</small><b style="font-size:17px">set/24 → dez/26</b><span class="up">no prazo</span></div>
+            <div class="pkc"><small>Documentação</small><b>94%</b><div class="barp"><i style="width:94%"></i></div></div>
+          </div>
+          <div class="chartbox"><h5>Curva S — físico realizado × previsto</h5>
+            <svg viewBox="0 0 600 150" width="100%" height="140" preserveAspectRatio="none" aria-hidden="true">
+              <polyline points="0,142 100,130 200,106 300,76 400,46 500,28 600,18" fill="none" stroke="#B4B2A9" stroke-width="2" stroke-dasharray="6 5"/>
+              <polyline points="0,142 100,126 200,99 300,68 400,40 500,24 600,13" fill="none" stroke="#8C7E5A" stroke-width="3"/>
+            </svg>
+            <div style="font-size:11.5px;color:var(--sec);margin-top:6px"><span style="color:#8C7E5A">● realizado</span> &nbsp; <span style="color:#B4B2A9">┄ previsto</span></div>
+          </div>
+        </div>
+        <div class="ppanel" id="pp1">
+          <div class="pk">
+            <div class="pkc"><small>Economia entregue</small><b style="color:var(--gold)">R$ 1,24 mi</b><span class="up">no acumulado</span></div>
+            <div class="pkc"><small>ISS aproveitado</small><b id="k1" style="color:var(--green)">118%</b><div class="barp"><i id="b1" style="width:100%"></i></div></div>
+            <div class="pkc"><small>INSS comprovado</small><b id="k2">89%</b><div class="barp"><i id="b2" style="width:89%"></i></div></div>
+            <div class="pkc"><small>Documentação</small><b>94%</b><div class="barp"><i style="width:94%"></i></div></div>
+          </div>
+          <div class="chartbox"><h5>Economia em ISSQN — acompanhamento</h5>
+            <div class="bars"><i style="height:42%"></i><i style="height:50%"></i><i style="height:40%"></i><i style="height:64%"></i><i style="height:72%"></i><i style="height:56%"></i><i style="height:60%"></i><i style="height:74%"></i><i style="height:58%"></i><i style="height:68%"></i><i style="height:82%"></i><i style="height:92%"></i></div>
+          </div>
+        </div>
       </div>
-      <div class="img rv d1" style="background-image:url('fiscal.jpg')">
-        <span class="badge"><span class="live"><span class="dot"></span>atualizado em tempo real</span></span>
-      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px" class="rv">
+      <p style="color:var(--sec);font-size:14px;margin-bottom:16px">Imagem ilustrativa do Portal VMS. O acesso real é liberado para clientes.</p>
+      <a class="btn btn-d" href="https://portal.vmsconsultoria.com" target="_blank" rel="noopener">Acessar o Portal VMS →</a>
     </div>
   </div>
 </section>
