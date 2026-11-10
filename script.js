@@ -26,11 +26,11 @@ var QZ={
     {q:'Sobre quais serviços você quer saber mais?',multi:true,o:['Gestão fiscal (ISS/INSS)','Isenção de ISS','Documentação trabalhista','Habite-se & CND','Auditoria pós-obra']}
   ]},
   eng:{tag:'Diagnóstico de Engenharia',steps:[
-    {q:'Em que fase está a sua obra?',o:[['Viabilidade / projeto',2],['Em execução',2],['Finalização / medição',2],['Ainda não iniciada',2]]},
+    {q:'Em que fase está a sua obra?',o:[['Viabilidade / projeto',2],['Em execução',2],['Finalização',2],['Ainda não iniciada',2]]},
     {q:'Você tem cronograma físico-financeiro atualizado?',o:[['Não',3],['Mais ou menos',2],['Sim',1]]},
     {q:'A obra tem financiamento (banco/fundo) com medições?',o:[['Sim',2],['Não',1],['Pretendo buscar',2]]},
     {q:'Quem gerencia a obra hoje?',o:[['Ninguém dedicado',3],['Equipe própria sobrecarregada',2],['Já terceirizo',1]]},
-    {q:'Sobre quais serviços você quer saber mais?',multi:true,o:['Planejamento de obras','Orçamento','Gerenciamento','Medição para financiador']}
+    {q:'Sobre quais serviços você quer saber mais?',multi:true,o:['Planejamento de obras','Orçamento','Gerenciamento','Planejamento para financiamento (banco)','Medição para financiador']}
   ]}
 };
 var cur=null,step=0,score=0,ans=[],sel=[],lead={};
