@@ -199,6 +199,18 @@ footer .fin{border-top:1px solid #2a3147;padding-top:18px;font-size:12px;color:#
 .rowlink:hover{border-color:var(--line2);background:var(--paper)}
 .rowlink .ico{color:var(--gold-d)}.rowlink b{font-size:15px}.rowlink small{color:var(--sec);font-size:13.5px}
 .rowlink .arw{margin-left:auto;color:var(--sec)}
+/* orientação técnica (acompanhar + orientar) */
+.orient{background:#fff;border:1px solid var(--line);border-radius:var(--rl);overflow:hidden;box-shadow:0 24px 50px rgba(26,29,38,.12)}
+.oh{background:var(--navy);color:#fff;padding:14px 18px;font-size:13.5px;font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.oh span{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#9aa0b0;font-weight:400;text-transform:uppercase;letter-spacing:.8px}
+.orow{display:grid;grid-template-columns:64px 1fr;gap:3px 12px;padding:14px 18px;border-bottom:1px solid var(--line);transition:.2s}
+.orow:last-child{border-bottom:none}
+.orow:hover{background:var(--paper)}
+.orow b{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--sec);grid-row:span 2;align-self:center}
+.orow .pr{font-size:14px;color:var(--navy);font-weight:500;letter-spacing:-.2px}
+.orow .oo{font-size:13.5px;color:var(--gold-d);display:flex;align-items:center;gap:7px;font-weight:500}
+.orow .oo:before{content:"→";font-weight:700}
+@media(max-width:560px){.orow{grid-template-columns:1fr}.orow b{grid-row:auto}}
 /* problemas que resolvemos */
 .probs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:920px;margin:0 auto}
 .prob{background:#fff;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:var(--r);padding:22px 24px;transition:.25s}
@@ -209,6 +221,8 @@ footer .fin{border-top:1px solid #2a3147;padding-top:18px;font-size:12px;color:#
 /* faq */
 .faq{max-width:800px;margin:0 auto}
 .faq .acc h4{font-size:16.5px}
+.faq .acc h4 .t{flex-direction:column-reverse;gap:5px}
+.faq .acc h4 .t small{text-transform:uppercase;letter-spacing:1.2px;font-size:11px;color:var(--gold-d);font-family:'IBM Plex Mono',monospace}
 /* benefícios do portal */
 .pben{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:960px;margin:26px auto 0}
 .pben div{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;transition:.25s}
