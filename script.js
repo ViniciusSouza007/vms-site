@@ -97,7 +97,7 @@ function qRender(){
     var serv=sel.length?sel.join(', '):'—';
     var msg='Olá, VMS! Fiz o diagnóstico '+tipo+' no site.\n\nNome: '+lead.nome+'\nTelefone: '+lead.tel+'\nE-mail: '+lead.email+'\n\nRespostas:\n'+linhas+'\n\nQuero saber mais sobre: '+serv+'\n\nResultado: '+title;
     var wa='https://wa.me/5511994044124?text='+encodeURIComponent(msg);
-    var mail='mailto:mariana@vmsconsultoria.com?subject='+encodeURIComponent('Lead — Diagnóstico '+tipo+' (site VMS)')+'&body='+encodeURIComponent(msg);
+    var mail='mailto:comercial@vmsconsultoria.com?subject='+encodeURIComponent('Lead — Diagnóstico '+tipo+' (site VMS)')+'&body='+encodeURIComponent(msg);
     h='<button class="x" onclick="closeQuiz()">×</button><div class="qres"><span class="score">Resultado · '+lead.nome.split(' ')[0]+'</span><h3>'+title+'</h3><p>'+txt+'</p>';
     h+='<p class="qhint" style="margin-top:-6px">Toque abaixo pra enviar seu diagnóstico e falar com um especialista.</p>';
     h+='<a class="btn btn-g" href="'+wa+'" target="_blank" rel="noopener">Enviar no WhatsApp</a> <a class="btn btn-o" href="'+mail+'">Enviar por e-mail</a></div>';
