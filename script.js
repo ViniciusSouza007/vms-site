@@ -14,7 +14,7 @@
   document.querySelectorAll('.rv:not(.in)').forEach(function(el){io.observe(el)});
   function fmt(n){return n>=1000?n.toLocaleString('pt-BR'):n}
   var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target,t=+el.dataset.count,p=el.dataset.prefix||'',s=el.dataset.suffix||'',t0=performance.now();
-    function tk(n){var k=Math.min(1,(n-t0)/1400),v=Math.round(t*(1-Math.pow(1-k,3)));el.innerHTML=p+'<em>'+fmt(v)+s+'</em>';if(k<1)requestAnimationFrame(tk)}requestAnimationFrame(tk);cio.unobserve(el)})},{threshold:.5});
+    function tk(n){var k=Math.min(1,(n-t0)/1400),v=Math.round(t*(1-Math.pow(1-k,3)));el.innerHTML='<em>'+p+fmt(v)+s+'</em>';if(k<1)requestAnimationFrame(tk)}requestAnimationFrame(tk);cio.unobserve(el)})},{threshold:.5});
   document.querySelectorAll('[data-count]').forEach(function(el){cio.observe(el)});
   // portal live ticker (ilustrativo)
   var secs=0;setInterval(function(){secs+=3;var a=document.getElementById('ago');if(a)a.textContent='atualizado há '+secs+'s'},3000);
@@ -51,7 +51,17 @@ function closeQuiz(){document.getElementById('modal').classList.remove('show')}
 function pick(v,i){var s=QZ[cur].steps[step];ans.push({q:s.q,a:s.o[i][0]});score+=v;step++;qRender()}
 function toggleSel(i){var o=QZ[cur].steps[step].o[i],k=sel.indexOf(o);if(k<0)sel.push(o);else sel.splice(k,1);qRender()}
 function nextStep(){step++;qRender()}
-function submitLead(){var n=(document.getElementById('ld-nome').value||'').trim(),c=(document.getElementById('ld-contato').value||'').trim();if(!n||!c){var e=document.getElementById('ld-err');if(e)e.style.display='block';return}lead={nome:n,contato:c};qRender()}
+function submitLead(){
+  var n=(document.getElementById('ld-nome').value||'').trim(),
+      t=(document.getElementById('ld-tel').value||'').trim(),
+      m=(document.getElementById('ld-email').value||'').trim(),
+      e=document.getElementById('ld-err'),err='';
+  if(!n)err='Preencha seu nome.';
+  else if(t.replace(/\D/g,'').length<10)err='Informe um telefone/WhatsApp com DDD.';
+  else if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m))err='Informe um e-mail válido.';
+  if(err){if(e){e.textContent=err;e.style.display='block'}return}
+  lead={nome:n,tel:t,email:m};qRender();
+}
 function qRender(){
   var z=QZ[cur],box=document.getElementById('qbox'),total=z.steps.length+1,h;
   if(step<z.steps.length){
@@ -70,10 +80,11 @@ function qRender(){
     var pct2=Math.round(z.steps.length/total*100);
     h='<button class="x" onclick="closeQuiz()">×</button><div class="qprog"><i style="width:'+pct2+'%"></i></div>';
     h+='<span class="tag">'+z.tag+' · último passo</span><h3>Pra onde enviamos seu diagnóstico?</h3>';
-    h+='<p class="qhint">Um especialista da VMS retorna com a análise. Sem compromisso.</p>';
-    h+='<div class="qfield"><label>Seu nome</label><input id="ld-nome" type="text" placeholder="Nome e sobrenome"></div>';
-    h+='<div class="qfield"><label>WhatsApp ou e-mail</label><input id="ld-contato" type="text" placeholder="(11) 90000-0000 ou voce@empresa.com"></div>';
-    h+='<p id="ld-err" style="display:none;color:#A32D2D;font-size:13px;margin-bottom:10px">Preencha seu nome e um contato.</p>';
+    h+='<p class="qhint">Um especialista da VMS retorna com a análise. Sem compromisso — todos os campos são obrigatórios.</p>';
+    h+='<div class="qfield"><label>Seu nome *</label><input id="ld-nome" type="text" placeholder="Nome e sobrenome"></div>';
+    h+='<div class="qfield"><label>WhatsApp / telefone *</label><input id="ld-tel" type="tel" inputmode="tel" placeholder="(11) 90000-0000"></div>';
+    h+='<div class="qfield"><label>E-mail *</label><input id="ld-email" type="email" inputmode="email" placeholder="voce@empresa.com"></div>';
+    h+='<p id="ld-err" style="display:none;color:#A32D2D;font-size:13px;margin-bottom:10px">Preencha todos os campos.</p>';
     h+='<button class="btn btn-g" style="width:100%;justify-content:center" onclick="submitLead()">Ver meu diagnóstico →</button>';
     box.innerHTML=h;
   }else{
@@ -84,7 +95,7 @@ function qRender(){
     var tipo=cur==='fiscal'?'fiscal':'de obra';
     var linhas=ans.map(function(a){return '• '+a.q+' '+a.a}).join('\n');
     var serv=sel.length?sel.join(', '):'—';
-    var msg='Olá, VMS! Fiz o diagnóstico '+tipo+' no site.\n\nNome: '+lead.nome+'\nContato: '+lead.contato+'\n\nRespostas:\n'+linhas+'\n\nQuero saber mais sobre: '+serv+'\n\nResultado: '+title;
+    var msg='Olá, VMS! Fiz o diagnóstico '+tipo+' no site.\n\nNome: '+lead.nome+'\nTelefone: '+lead.tel+'\nE-mail: '+lead.email+'\n\nRespostas:\n'+linhas+'\n\nQuero saber mais sobre: '+serv+'\n\nResultado: '+title;
     var wa='https://wa.me/5511994044124?text='+encodeURIComponent(msg);
     var mail='mailto:mariana@vmsconsultoria.com?subject='+encodeURIComponent('Lead — Diagnóstico '+tipo+' (site VMS)')+'&body='+encodeURIComponent(msg);
     h='<button class="x" onclick="closeQuiz()">×</button><div class="qres"><span class="score">Resultado · '+lead.nome.split(' ')[0]+'</span><h3>'+title+'</h3><p>'+txt+'</p>';

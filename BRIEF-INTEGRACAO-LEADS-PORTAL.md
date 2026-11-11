@@ -28,7 +28,8 @@ Content-Type: application/json
   "pagina": "https://vmsconsultoria.com/",
   "tipo": "fiscal",
   "nome": "Maria Souza",
-  "contato": "11999999999",
+  "telefone": "11999999999",
+  "email": "maria@construtora.com.br",
   "resultado": "Alto potencial — vale uma análise com prioridade.",
   "servicos_interesse": ["Gestão fiscal (ISS/INSS)", "Isenção de ISS"],
   "respostas": [
@@ -50,7 +51,8 @@ Campos:
 | `pagina` | string | URL de onde o lead saiu |
 | `tipo` | string | `"fiscal"` ou `"engenharia"` |
 | `nome` | string | obrigatório |
-| `contato` | string | WhatsApp **ou** e-mail (campo único, como o usuário digitou) |
+| `telefone` | string | WhatsApp/telefone com DDD — **obrigatório** (validado no site) |
+| `email` | string | e-mail — **obrigatório** (validado no site) |
 | `resultado` | string | classificação do diagnóstico |
 | `servicos_interesse` | array de string | seleção múltipla do último passo |
 | `respostas` | array de objetos | pergunta + resposta, na ordem |
@@ -67,10 +69,10 @@ Em erro, devolver status 4xx/5xx com `{ "ok": false, "erro": "..." }`.
 
 ## Comportamento no Portal
 
-1. Validar campos obrigatórios (`nome`, `contato`) e descartar se `hp` vier preenchido.
+1. Validar campos obrigatórios (`nome`, `telefone`, `email`) e descartar se `hp` vier preenchido.
 2. Criar registro em **Prospecção** com status inicial (ex.: `novo`) e origem `site — diagnóstico`.
 3. Guardar `respostas` e `servicos_interesse` (JSON) no registro, para o comercial ver o contexto.
-4. Se já existir prospect com o mesmo contato, **não duplicar** — anexar como nova interação.
+4. Se já existir prospect com o mesmo e-mail ou telefone, **não duplicar** — anexar como nova interação.
 5. Notificar o comercial (e-mail para `mariana@vmsconsultoria.com` e/ou alerta no portal).
 
 ## Segurança (importante)
@@ -84,7 +86,7 @@ Portanto a proteção precisa ser no servidor:
 - **Honeypot** (campo `hp`) já previsto no payload.
 - **Limite de tamanho** do corpo (ex.: 8 KB) e validação de tipos.
 - Não confiar em nada vindo do cliente: sanitizar antes de gravar/exibir.
-- Sem dados sensíveis: o site envia apenas nome, contato e respostas do diagnóstico.
+- Sem dados sensíveis: o site envia apenas nome, telefone, e-mail e as respostas do diagnóstico.
 
 ## O que o site fará depois que o endpoint existir
 

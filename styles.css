@@ -137,15 +137,20 @@ section{padding:94px 0}
 .step .n{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--gold-d)}
 .step h3{font-size:19px;margin:8px 0 7px;letter-spacing:-.3px}.step p{font-size:14px;color:var(--sec)}
 /* accordion */
-.acc{border:1px solid var(--line);border-radius:var(--r);margin-bottom:10px;background:#fff;overflow:hidden}
-.acc.open{box-shadow:0 14px 30px rgba(26,29,38,.08)}
-.acc h4{font-size:16px;color:var(--navy);padding:17px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;letter-spacing:-.2px}
-.acc h4 .ic{color:var(--gold);font-size:20px;transition:transform .3s}.acc.open h4 .ic{transform:rotate(45deg)}
+.acc{border:1px solid var(--line);border-left:3px solid transparent;border-radius:var(--r);margin-bottom:10px;background:#fff;overflow:hidden;transition:.25s}
+.acc.open{box-shadow:0 14px 30px rgba(26,29,38,.09);border-left-color:var(--gold)}
+.acc h4{font-size:16px;color:var(--navy);padding:17px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;letter-spacing:-.2px}
+.acc h4 .t{display:flex;flex-direction:column;gap:3px;min-width:0}
+.acc h4 .t small{font-weight:400;font-size:13.5px;color:var(--sec);letter-spacing:0;line-height:1.4}
+.acc h4 .ic{color:var(--gold);display:flex;flex:0 0 auto;transition:transform .3s}
+.acc.open h4 .ic{transform:rotate(180deg)}
 .acc .body{max-height:0;overflow:hidden;transition:max-height .4s ease}
 .acc .body ul{list-style:none;padding:0 20px 16px}
 .acc .body p{padding:0 20px 18px;font-size:15px;color:#43485a;line-height:1.65}
-.acc .body li{padding:6px 0 6px 22px;position:relative;font-size:14.5px;color:#43485a}
-.acc .body li:before{content:"";position:absolute;left:0;top:13px;width:8px;height:8px;border:2px solid var(--gold);border-radius:2px}
+.acc .body ul{columns:2;column-gap:30px}
+.acc .body li{padding:6px 0 6px 24px;position:relative;font-size:14.5px;color:#43485a;break-inside:avoid}
+.acc .body li:before{content:"";position:absolute;left:3px;top:11px;width:6px;height:11px;border:solid var(--green);border-width:0 2px 2px 0;transform:rotate(45deg)}
+@media(max-width:720px){.acc .body ul{columns:1}}
 /* who we serve */
 .who{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .wtag{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px;text-align:center}
