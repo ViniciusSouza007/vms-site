@@ -117,6 +117,26 @@ section{padding:94px 0}
 .chartbox{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px}
 .chartbox h5{font-size:11px;color:var(--sec);letter-spacing:.5px;text-transform:uppercase;font-family:'IBM Plex Mono',monospace;margin-bottom:10px}
 .bars{display:flex;align-items:flex-end;gap:5px;height:96px}.bars i{flex:1;background:#639922;border-radius:3px 3px 0 0}
+/* painel do portal — fiel ao produto */
+.pecon{display:grid;grid-template-columns:1fr 1.2fr;gap:20px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin-bottom:12px}
+.pe-main small,.pe-chart small{font-size:10px;letter-spacing:.6px;text-transform:uppercase;color:var(--sec);font-family:'IBM Plex Mono',monospace;display:block;margin-bottom:8px}
+.pe-main b{display:block;font-size:clamp(24px,3.4vw,32px);color:var(--gold-d);letter-spacing:-1px;font-weight:700;line-height:1.1}
+.pe-main span{display:block;font-size:12px;color:var(--sec);margin-top:9px;line-height:1.5}
+.pe-chart .bars{height:72px;gap:4px}
+.plegend{display:flex;gap:14px;flex-wrap:wrap;margin-top:9px;font-size:10.5px;color:var(--sec);font-family:'IBM Plex Mono',monospace}
+.plegend i{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:5px}
+.plegend .l1{background:#3B6D11}.plegend .l2{background:var(--goldl)}.plegend .l3{background:var(--navy)}
+.bars i.g2{background:var(--goldl)}
+.pobras{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pobra{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.po-h{display:flex;justify-content:space-between;align-items:center;gap:8px;padding-bottom:9px;margin-bottom:7px;border-bottom:1px solid var(--line)}
+.po-h b{font-size:13px;color:var(--navy);letter-spacing:.3px}
+.po-t{font-size:10.5px;font-family:'IBM Plex Mono',monospace;padding:3px 10px;border-radius:20px;white-space:nowrap}
+.po-t.at{background:#FBF2E2;color:#854F0B}
+.po-t.ok{background:#EEF5E6;color:var(--green)}
+.po-r{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;padding:5px 0;color:var(--sec)}
+.po-r b{color:var(--navy);font-weight:600}
+@media(max-width:720px){.pecon,.pobras{grid-template-columns:1fr}}
 /* split (image + text) */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
 .split .txt h2{font-size:clamp(26px,3.4vw,40px);margin:12px 0 14px}
