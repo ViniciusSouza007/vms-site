@@ -4,22 +4,35 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VMS Engenharia — Planejamento, gerenciamento e medição de obras</title>
 <meta name="description" content="VMS Engenharia: viabilidade, planejamento, orçamento, gerenciamento e medição de obras para construtoras, incorporadoras e agentes financeiros — com andamento físico no Portal.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VMS Consultoria &amp; Engenharia">
+<meta property="og:title" content="VMS Engenharia de Obras — planejamento, gerenciamento e medição">
+<meta property="og:description" content="Viabilidade, planejamento, orçamento, gerenciamento e medição de obras — com o andamento físico no Portal VMS.">
+<meta property="og:image" content="https://vms-site-one.vercel.app/og.jpg">
+<meta property="og:url" content="https://vms-site-one.vercel.app/engenharia.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#3A4258">
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div id="prog"></div>
 <header id="hd" class="on-dark">
   <div class="wrap bar">
     <img class="logo" src="logo-vms.png" alt="VMS"><img class="logo-l" src="logo-vms.png" alt="VMS" style="filter:brightness(0) invert(1)">
-    <nav><a href="index.html">Início</a><a href="fiscal.html">VMS Consultoria</a><a href="#servicos">Serviços</a><a href="#contato">Contato</a></nav>
-    <button class="btn btn-g hcta" onclick="openQuiz('eng')">Diagnóstico gratuito</button>
-    <button class="burger" onclick="document.querySelector('nav').scrollIntoView()">☰</button>
+    <nav><a href="index.html">Início</a><a href="fiscal.html">VMS Consultoria</a><a href="#servicos">Serviços</a><a href="#contato">Contato</a><button class="btn btn-g m-cta" onclick="openQuiz('eng')">Diagnóstico gratuito</button></nav>
+    <div class="hright">
+      <a class="hportal" href="https://portal.vmsconsultoria.com" target="_blank" rel="noopener">Portal do Cliente</a>
+      <button class="btn btn-g hcta" onclick="openQuiz('eng')">Diagnóstico gratuito</button>
+      <button class="burger" aria-label="Abrir menu" aria-expanded="false" onclick="toggleMenu(event)">☰</button>
+    </div>
   </div>
 </header>
 
 <section class="hero">
-  <div class="bg" style="background-image:url('engenharia.jpg')"></div><div class="ov"></div>
+  <div class="bg" style="background-image:url('obra.jpg')"></div><div class="ov"></div>
   <div class="wrap">
     <a href="index.html" class="eb rv in" style="text-decoration:none">← VMS · uma só empresa, dois caminhos</a>
     <h1 class="rv in d1">VMS Engenharia — a sua obra <span class="hl">planejada, gerenciada e no prazo.</span></h1>
@@ -34,6 +47,19 @@
   <div class="stat"><b data-count="7000" data-suffix="+">0</b><small>UNIDADES SOB GESTÃO</small></div>
   <div class="stat"><b data-count="45" data-prefix="R$ " data-suffix=" mi+">0</b><small>ECONOMIA EM ISSQN</small></div>
 </div></div>
+
+<section class="paper">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="eb" style="justify-content:center">O que costuma doer</span><h2>Onde prazo e orçamento escorrem.</h2>
+      <p>Os pontos que mais aparecem quando a VMS assume o acompanhamento.</p></div>
+    <div class="probs">
+      <div class="prob rv"><b>Cronograma que não reflete a obra</b><p>O papel diz uma coisa, o canteiro diz outra. Quando o desvio aparece no relatório, já custou caro.</p></div>
+      <div class="prob rv d1"><b>Orçamento sem rastro</b><p>Custo que cresce sem que ninguém saiba exatamente onde — e sem comparação com o previsto.</p></div>
+      <div class="prob rv d2"><b>Liberação do banco travada</b><p>Medição ou documentação fora do padrão que o agente financeiro exige, e a parcela não sai no prazo.</p></div>
+      <div class="prob rv d3"><b>Obra sem dono</b><p>Equipe própria sobrecarregada, decisões tomadas tarde e ninguém dedicado a olhar prazo, custo e qualidade juntos.</p></div>
+    </div>
+  </div>
+</section>
 
 <section id="servicos">
   <div class="wrap">
@@ -71,7 +97,7 @@
 
 <section>
   <div class="wrap">
-    <div class="sec-head rv"><span class="eb" style="justify-content:center">Quem atendemos</span><h2>Da obra à rede, ao banco.</h2></div>
+    <div class="sec-head rv"><span class="eb" style="justify-content:center">Quem atendemos</span><h2>De quem constrói a quem financia.</h2></div>
     <div class="who">
       <div class="wtag rv"><div class="i"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17a8 8 0 0 1 16 0"/><path d="M10 9V6a2 2 0 0 1 4 0v3"/><path d="M3 17h18v2H3z"/></svg></div><b>Construtoras</b><small>planejamento e gerenciamento</small></div>
       <div class="wtag rv d1"><div class="i"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16M9 7h2M9 11h2M9 15h2"/></svg></div><b>Incorporadoras</b><small>viabilidade e orçamento</small></div>

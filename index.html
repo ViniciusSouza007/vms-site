@@ -4,18 +4,31 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VMS Consultoria &amp; Engenharia — Fiscal e engenharia de obras, em tempo real</title>
 <meta name="description" content="Dois caminhos, uma só VMS: gestão fiscal (ISS/INSS) e engenharia de obras para construtoras e incorporadoras. Acompanhe tudo 24h pelo Portal VMS. Diagnóstico gratuito.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VMS Consultoria &amp; Engenharia">
+<meta property="og:title" content="VMS Consultoria &amp; Engenharia — fiscal e engenharia de obras">
+<meta property="og:description" content="Gestão fiscal (ISS/INSS) e engenharia de obras para construtoras e incorporadoras. Acompanhe cada resultado pelo Portal VMS.">
+<meta property="og:image" content="https://vms-site-one.vercel.app/og.jpg">
+<meta property="og:url" content="https://vms-site-one.vercel.app/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#3A4258">
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div id="prog"></div>
 
 <header id="hd" class="on-dark">
   <div class="wrap bar">
     <a href="index.html" aria-label="VMS — início"><img class="logo" src="logo-vms.png" alt="VMS Consultoria &amp; Engenharia"><img class="logo-l" src="logo-vms.png" alt="VMS" style="filter:brightness(0) invert(1)"></a>
-    <nav><a href="#modulos">Empresas</a><a href="#tempo-real">Portal</a><a href="#diagnostico">Diagnóstico</a><a href="#contato">Contato</a></nav>
-    <button class="btn btn-g hcta" onclick="openQuiz('fiscal')">Diagnóstico gratuito</button>
-    <button class="burger" aria-label="Abrir menu" onclick="document.querySelector('nav').scrollIntoView()">☰</button>
+    <nav><a href="#modulos">Empresas</a><a href="#como">Como funciona</a><a href="#tempo-real">Portal</a><a href="#diagnostico">Diagnóstico</a><a href="#contato">Contato</a><button class="btn btn-g m-cta" onclick="openQuiz('fiscal')">Diagnóstico gratuito</button></nav>
+    <div class="hright">
+      <a class="hportal" href="https://portal.vmsconsultoria.com" target="_blank" rel="noopener">Portal do Cliente</a>
+      <button class="btn btn-g hcta" onclick="openQuiz('fiscal')">Diagnóstico gratuito</button>
+      <button class="burger" aria-label="Abrir menu" aria-expanded="false" onclick="toggleMenu(event)">☰</button>
+    </div>
   </div>
 </header>
 
@@ -31,7 +44,7 @@
       <div class="hs"><b>VMS Consultoria Fiscal</b><span>ISS · INSS · isenção · Habite-se</span></div>
       <div class="hs"><b>VMS Engenharia de Obras</b><span>planejamento · gerenciamento · orçamento · medição</span></div>
     </div>
-    <p class="hero-area rv in d3">Para <b>construtoras</b>, <b>incorporadoras</b> e <b>obras</b> — ISS municipal e INSS federal (SP e região).</p>
+    <p class="hero-area rv in d3">Para <b>construtoras</b>, <b>incorporadoras</b> e <b>obras</b> — ISS municipal e INSS federal em todo o Brasil.</p>
     <div class="actions rv in d3">
       <button class="btn btn-g" onclick="openQuiz('fiscal')">Diagnóstico fiscal</button>
       <button class="btn btn-ghost" onclick="openQuiz('eng')">Diagnóstico de obra</button>
@@ -63,7 +76,7 @@
         <span class="ent">Ver a VMS Consultoria →</span>
       </a>
       <a class="mod rv d1" href="engenharia.html">
-        <span class="mod-img" style="background-image:url('engenharia.jpg')" role="img" aria-label="Engenheiros VMS no canteiro de obras"></span>
+        <span class="mod-img" style="background-image:url('obra.jpg')" role="img" aria-label="Obra VMS em construção"></span>
         <span class="eb">VMS Engenharia</span>
         <h3>Obras, Gerenciamento &amp; Medição</h3>
         <div class="sub">O avanço de cada obra, do cronograma ao custo.</div>
@@ -75,8 +88,35 @@
   </div>
 </section>
 
+<!-- COMO FUNCIONA (trilha guiada) -->
+<section id="como">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="eb" style="justify-content:center">Como funciona</span><h2>Do diagnóstico ao acompanhamento, em três passos.</h2>
+      <p>Clique em cada etapa para ver o que acontece.</p></div>
+    <div class="flow rv">
+      <button class="fstep active" onclick="fStep(0,this)"><span class="n">01</span><b>Diagnóstico</b><small>1 minuto, sem compromisso</small></button>
+      <button class="fstep" onclick="fStep(1,this)"><span class="n">02</span><b>Plano e execução</b><small>fiscal, engenharia ou os dois</small></button>
+      <button class="fstep" onclick="fStep(2,this)"><span class="n">03</span><b>Acompanhamento</b><small>resultado no Portal VMS</small></button>
+    </div>
+    <div class="fpanel show" id="fp0">
+      <h4>Você responde, a VMS aponta onde está o dinheiro.</h4>
+      <p>Em cerca de um minuto você conta o essencial sobre a obra. A partir daí mostramos onde pode haver <b>economia não aproveitada</b>, onde existe <b>risco de passivo</b> e o que vale destravar primeiro — <span class="ok">sem compromisso</span>.</p>
+      <div style="margin-top:20px"><button class="btn btn-g" onclick="openQuiz('fiscal')">Começar pelo fiscal</button> <button class="btn btn-o" onclick="openQuiz('eng')">Começar pela obra</button></div>
+    </div>
+    <div class="fpanel" id="fp1">
+      <h4>A equipe entra pelo caminho que faz sentido.</h4>
+      <p>Na <b>Consultoria Fiscal</b>, cuidamos de ISS e INSS pensando como auditor: pagar o mínimo que a lei exige, comprovar o crédito e chegar ao Habite-se sem passivo. Na <b>Engenharia de Obras</b>, entram planejamento, orçamento, gerenciamento, o cronograma que o banco exige e a medição para liberar financiamento. Uma só empresa — você pode usar uma frente ou as duas.</p>
+    </div>
+    <div class="fpanel" id="fp2">
+      <h4>Você acompanha sem esperar o relatório do mês.</h4>
+      <p>O resultado fiscal e o andamento físico da obra ficam no <b>Portal VMS</b>, no mesmo lugar, disponíveis quando você quiser. É a diferença entre <span class="ok">saber agora</span> e descobrir no fechamento.</p>
+      <div style="margin-top:20px"><a class="btn btn-o" href="#tempo-real">Ver o Portal ↓</a></div>
+    </div>
+  </div>
+</section>
+
 <!-- TEMPO REAL / PORTAL -->
-<section id="tempo-real">
+<section id="tempo-real" class="paper">
   <div class="wrap">
     <div class="sec-head rv"><span class="eb" style="justify-content:center">O diferencial · tempo real</span><h2>Fiscal <span style="color:var(--gold)">e</span> físico, sempre à vista.</h2>
       <p>Enquanto a maioria entrega um relatório no fim do mês, a VMS te dá acesso a um portal próprio — o resultado fiscal <b>e</b> o andamento da obra no mesmo lugar. Veja um exemplo:</p></div>
@@ -118,6 +158,11 @@
         </div>
       </div>
     </div>
+    <div class="pben rv">
+      <div><b>Resultado fiscal</b><small>economia entregue, ISS e INSS aproveitados, documentação em dia</small></div>
+      <div><b>Andamento da obra</b><small>avanço físico, cronograma e medições</small></div>
+      <div><b>Um só lugar, 24h</b><small>você e sua equipe consultam quando quiserem</small></div>
+    </div>
     <div style="text-align:center;margin-top:32px" class="rv">
       <p style="color:var(--sec);font-size:14px;margin-bottom:16px">Imagem ilustrativa do Portal VMS. O acesso real é liberado para clientes.</p>
       <a class="btn btn-d" href="https://portal.vmsconsultoria.com" target="_blank" rel="noopener">Acessar o Portal VMS →</a>
@@ -145,12 +190,27 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="eb" style="justify-content:center">Dúvidas frequentes</span><h2>O que construtoras e incorporadoras mais perguntam.</h2></div>
+    <div class="faq">
+      <div class="acc rv"><h4>Quando uma obra pode ser isenta de ISS? <span class="ic">+</span></h4><div class="body"><p>Em geral, obras enquadradas como <b>habitação de interesse social (HIS)</b> podem ter isenção de ISS, conforme a legislação do município. O enquadramento depende do projeto e do zoneamento — não é automático, e cada prefeitura tem suas exigências. A VMS analisa o enquadramento, emite a documentação técnica e sustenta a posição junto ao município.</p></div></div>
+      <div class="acc rv"><h4>Por que o crédito de INSS da minha obra pode não ser aproveitado? <span class="ic">+</span></h4><div class="body"><p>Porque recolher não basta: o valor precisa estar <b>sustentado por documentação trabalhista</b> (FGTS, eSocial, guias e documentos dos prestadores) na aferição da obra. Quando essa documentação não fecha, o crédito simplesmente não entra — e a diferença vira saldo a recolher no fim.</p></div></div>
+      <div class="acc rv"><h4>Qual o melhor momento para chamar a VMS? <span class="ic">+</span></h4><div class="body"><p>Quanto antes, melhor. No início da obra dá para planejar e <b>evitar</b> a perda de crédito. Perto do Habite-se ainda é possível recuperar e regularizar, mas com menos margem — e normalmente com mais pressa. Também atendemos obras já encerradas, com auditoria do que foi protocolado.</p></div></div>
+      <div class="acc rv"><h4>Vocês atendem obras fora de São Paulo? <span class="ic">+</span></h4><div class="body"><p>Sim, em <b>todo o Brasil</b>. O INSS é federal e segue a mesma regra em qualquer lugar; o ISS é municipal, então a alíquota e as regras de isenção mudam conforme a prefeitura — e isso faz parte da nossa análise.</p></div></div>
+      <div class="acc rv"><h4>O diagnóstico tem algum custo? <span class="ic">+</span></h4><div class="body"><p>Não. O diagnóstico é <b>gratuito e sem compromisso</b>. Você responde algumas perguntas sobre a obra e um especialista retorna apontando onde pode haver economia não aproveitada e risco a blindar.</p></div></div>
+      <div class="acc rv"><h4>Como funciona o acompanhamento pelo Portal VMS? <span class="ic">+</span></h4><div class="body"><p>Clientes recebem acesso ao <b>Portal VMS</b>, onde acompanham o resultado fiscal e o andamento físico da obra no mesmo lugar, sem depender do relatório do fim do mês. O acesso é liberado após a contratação.</p></div></div>
+    </div>
+  </div>
+</section>
+
 <section class="band" id="contato">
   <div class="wrap rv">
-    <h2>Descubra onde a sua obra pode economizar.</h2>
-    <p>Diagnóstico gratuito, fiscal ou de obra. Ou fale direto com a gente.</p>
-    <button class="btn btn-g" onclick="openQuiz('fiscal')">Fazer diagnóstico fiscal</button>
-    <a class="btn btn-ghost" href="https://wa.me/5511994044124?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20VMS%20e%20quero%20falar%20com%20um%20especialista." target="_blank" rel="noopener" style="border-color:rgba(255,255,255,.5)">Falar no WhatsApp</a>
+    <h2>Vamos conversar sobre a sua obra?</h2>
+    <p>Fale direto com um especialista da VMS. Já é cliente? Acesse o Portal.</p>
+    <a class="btn btn-g" href="https://wa.me/5511994044124?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20VMS%20e%20quero%20falar%20com%20um%20especialista." target="_blank" rel="noopener">Falar no WhatsApp</a>
+    <a class="btn btn-ghost" href="https://portal.vmsconsultoria.com" target="_blank" rel="noopener" style="border-color:rgba(255,255,255,.5)">Acessar o Portal</a>
   </div>
 </section>
 

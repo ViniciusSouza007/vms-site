@@ -1,7 +1,15 @@
 // VMS site — shared interactions
 (function(){
-  var hd=document.getElementById('hd');
-  if(hd)addEventListener('scroll',function(){hd.classList.toggle('scrolled',scrollY>50)});
+  var hd=document.getElementById('hd'),prog=document.getElementById('prog');
+  function onScroll(){
+    if(hd)hd.classList.toggle('scrolled',scrollY>50);
+    if(prog){var h=document.documentElement.scrollHeight-innerHeight;prog.style.width=(h>0?Math.min(100,(scrollY/h)*100):0)+'%'}
+  }
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+  // menu mobile: fecha ao clicar em link, fora do menu ou com ESC
+  document.querySelectorAll('header nav a').forEach(function(a){a.addEventListener('click',function(){if(hd)hd.classList.remove('menu-open')})});
+  addEventListener('click',function(e){if(hd&&hd.classList.contains('menu-open')&&!hd.contains(e.target))hd.classList.remove('menu-open')});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&hd)hd.classList.remove('menu-open')});
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.13});
   document.querySelectorAll('.rv:not(.in)').forEach(function(el){io.observe(el)});
   function fmt(n){return n>=1000?n.toLocaleString('pt-BR'):n}
@@ -14,6 +22,10 @@
   // accordion
   document.querySelectorAll('.acc h4').forEach(function(h){h.addEventListener('click',function(){var a=h.parentElement,b=a.querySelector('.body'),open=a.classList.contains('open');a.classList.toggle('open');b.style.maxHeight=open?null:b.scrollHeight+'px'})});
 })();
+// menu mobile (global)
+function toggleMenu(ev){if(ev&&ev.stopPropagation)ev.stopPropagation();var hd=document.getElementById('hd');if(hd)hd.classList.toggle('menu-open')}
+// trilha guiada "como funciona" (global)
+function fStep(i,el){document.querySelectorAll('.fstep').forEach(function(s){s.classList.remove('active')});el.classList.add('active');for(var k=0;k<3;k++){var p=document.getElementById('fp'+k);if(p)p.classList.toggle('show',k===i)}}
 // portal tabs (global)
 function pTab(i,el){document.querySelectorAll('.ptab').forEach(function(t){t.classList.remove('active')});el.classList.add('active');var a=document.getElementById('pp0'),b=document.getElementById('pp1');if(a)a.classList.toggle('show',i===0);if(b)b.classList.toggle('show',i===1)}
 // ===== Diagnóstico / lead (global) =====
